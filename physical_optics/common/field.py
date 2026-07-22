@@ -24,3 +24,18 @@ class Field:
 
         # Complex field
         self.U = np.ones((grid.Ny, grid.Nx), dtype=complex)
+
+    def copy(self):
+        """
+        Create a copy of the optical field.
+
+        Returns
+        -------
+        Field
+            A new Field object with the same grid, wavelength and a
+            copy of the complex field.
+        """
+
+        field = Field(self.grid, self.wavelength)
+        field.U = self.U.copy()
+        return field
